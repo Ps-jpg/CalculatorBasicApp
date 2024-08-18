@@ -24,7 +24,8 @@ Installation
 
     bash
 
-    git clone https://github.com/Ps-jpg/CalculatorBasicApp
+    git clone https://github.com/Ps-jpg/CalculatorBasicApp.git --branch master
+    
 
     Open the project in Android Studio.
     Build and run the project on an Android device or emulator.

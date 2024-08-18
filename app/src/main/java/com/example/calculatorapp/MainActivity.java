@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView inputDisplay;
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    private Button btnAdd, btnSub, btnMul, btnDiv, btnClear, btnEqual, btnHistory, btnNotes;
+    private Button btnAdd, btnSub, btnMul, btnDiv, btnClear, btnEqual, btnHistory, btnNotes, btnDot, btnBackspace;
     private String currentInput = "";
     private String operation = "";
     private double result = 0;
@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnHistory = findViewById(R.id.btnHistory);
         btnNotes = findViewById(R.id.btnNotes);
+        btnDot = findViewById(R.id.btnDot);
+        btnBackspace = findViewById(R.id.btnBackspace);
 
         // Initialize SoundPool and load sound
         AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -86,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
     private void setButtonListenersWithAnimation() {
         Button[] buttons = {
                 btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
-                btnAdd, btnSub, btnMul, btnDiv, btnClear, btnEqual, btnHistory, btnNotes
+                btnAdd, btnSub, btnMul, btnDiv, btnClear, btnEqual, btnHistory, btnNotes,
+                btnDot, btnBackspace
         };
 
         for (Button button : buttons) {
@@ -120,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
             appendNumber("8");
         } else if (id == R.id.btn9) {
             appendNumber("9");
+        } else if (id == R.id.btnDot) {
+            appendDot();
+        } else if (id == R.id.btnBackspace) {
+            backspace();
         } else if (id == R.id.btnAdd) {
             setOperation("+");
         } else if (id == R.id.btnSub) {
@@ -142,6 +149,24 @@ public class MainActivity extends AppCompatActivity {
     private void appendNumber(String number) {
         currentInput += number;
         inputDisplay.setText(currentInput);
+    }
+
+    private void appendDot() {
+        if (!currentInput.contains(".")) {
+            if (currentInput.isEmpty()) {
+                currentInput = "0."; // if the input is empty, start with "0."
+            } else {
+                currentInput += ".";
+            }
+            inputDisplay.setText(currentInput);
+        }
+    }
+
+    private void backspace() {
+        if (!currentInput.isEmpty()) {
+            currentInput = currentInput.substring(0, currentInput.length() - 1);
+            inputDisplay.setText(currentInput.isEmpty() ? "0" : currentInput);
+        }
     }
 
     private void setOperation(String op) {

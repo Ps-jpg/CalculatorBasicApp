@@ -37,7 +37,10 @@ Usage
     Press "=" to get the result or "C" to clear the input.
 
 Demo
-![MainScreen](https://github.com/user-attachments/assets/a5b14f37-bae1-4741-82ec-f40f46a1440c)
+![MainScreen]
+
+
+![new screen](https://github.com/user-attachments/assets/5dd061a3-4873-4e0b-aec9-df8d7fc8533f)
 
 
 
